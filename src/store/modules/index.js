@@ -1,6 +1,14 @@
-import test from "./test";
+import notes from "./notes";
 import { combineReducers } from "redux";
+import { all } from "redux-saga/effects";
+import { noteSaga } from "./notes";
 
 export default combineReducers({
-  test
+  notes
 });
+
+export function* rootSaga() {
+  yield all(
+    noteSaga(),
+  );
+}
